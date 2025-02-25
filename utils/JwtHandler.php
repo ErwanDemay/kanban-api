@@ -13,11 +13,13 @@ class JwtHandler
   private $iat;
   private $exp;
 
-  public function construct()
+  public function __construct()
   {
     $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
-    $this->key = $_ENV['JWT_SECRET'] ?? 'default_secret_key';
+
+    $this->key = getenv('JWT_SECRET') ?: 'default_secret_key';
+
     $this->iat = time();
     $this->exp = $this->iat + 60 * 60 * 24; //Expiration de 24h
   }
