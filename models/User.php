@@ -17,7 +17,7 @@ class User
   public function create()
   {
     $query = "INSERT INTO " . $this->table_name . " 
-                  (username, email, password_hash) 
+                  (username, email, password) 
                   VALUES (:username, :email, :password)";
 
     $stmt = $this->conn->prepare($query);
@@ -41,7 +41,7 @@ class User
 
   public function emailExists()
   {
-    $query = "SELECT id, username, password_hash 
+    $query = "SELECT id, username, password 
                 FROM " . $this->table_name . " 
                 WHERE email = ?
                 LIMIT 0,1";
@@ -61,7 +61,7 @@ class User
 
       $this->id = $row['id'];
       $this->username = $row['username'];
-      $this->password_hash = $row['password_hash'];
+      $this->password = $row['password'];
 
       return true;
     }

@@ -1,7 +1,7 @@
 <?php
 //headers
 header("Access-Control-Allow-Origin: *");
-header("Content-Type : application/json; charset_UTF-8");
+header("Content-Type: application/json; charset_UTF-8");
 header("Access-Control-Allow-Methods: POST, GET , PUT ,DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-Width");
 
@@ -69,9 +69,9 @@ switch ($api_endpoint) {
     $board_controller = new BoardController($db, $user_id);
 
     if ($request_method === 'GET') {
-      if ($resource_id) {
+      if ($ressource_id) {
         // Get specific board
-        echo $board_controller->getSingleBoard($resource_id);
+        echo $board_controller->getSingleBoard($ressource_id);
       } else {
         // Get all boards
         echo $board_controller->getBoards();

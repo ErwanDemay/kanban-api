@@ -37,7 +37,7 @@ class Board
 
   public function readAll()
   {
-    $query = "SELECT * FROM" . $this->table_name . " WHERE user_id = :user_id 
+    $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id 
     ORDER BY created_at DESC";
 
     $stmt = $this->conn->prepare($query);

@@ -35,7 +35,7 @@ class AuthController
   {
     $this->user->email = $data['email'];
 
-    if ($this->user->emailExists() && password_verify($data['password'], $this->user->password_hash)) {
+    if ($this->user->emailExists() && password_verify($data['password'], $this->user->password)) {
       $token = $this->jwt->generateToken($this->user->id);
 
       return json_encode([

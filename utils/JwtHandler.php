@@ -18,6 +18,7 @@ class JwtHandler
     $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
 
+
     $this->key = getenv('JWT_SECRET') ?: 'default_secret_key';
 
     $this->iat = time();

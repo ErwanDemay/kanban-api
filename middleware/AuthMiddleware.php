@@ -15,7 +15,8 @@ class AuthMiddleware
     $authHeader = isset($headers['Authorization']) ? $headers['Authorization'] : "";
 
     if ($authHeader) {
-      $token = str_replace('Bearer', "", $authHeader);
+      $token = str_replace('Bearer ', "", $authHeader);
+
       $decoded = $this->jwt->validateToken($token);
 
       if ($decoded) {
@@ -23,11 +24,13 @@ class AuthMiddleware
       }
     }
 
+
+
     header("HTTP/1.1 401 Unauthorized");
     echo json_encode([
       "status" => "error",
       "message" => "Unauthorized access."
     ]);
-    exit();
+    exit;
   }
 }
